@@ -1,0 +1,21 @@
+Gene	Direction	β (RE meta)	SE	p (meta)	FDR (BH)	I² (%)	Direction consistency	LOCO rate
+CHCHD10	case_down	-0.164	0.037	7.46e-06	0.255	0.0	1.0	1.0
+CLTB	case_down	-0.145	0.034	1.61e-05	0.255	0.0	1.0	1.0
+CCDC28B	case_down	-0.216	0.053	4.74e-05	0.303	0.0	1.0	1.0
+DYNLL2	case_down	-0.137	0.034	6.78e-05	0.303	0.0	1.0	1.0
+GTF2F2	case_down	-0.161	0.040	6.94e-05	0.303	0.0	1.0	1.0
+PLEKHJ1	case_down	-0.170	0.043	7.10e-05	0.303	0.0	1.0	1.0
+EIF2B3	case_down	-0.112	0.028	8.15e-05	0.303	0.0	1.0	1.0
+TIMM17A	case_down	-0.146	0.038	1.01e-04	0.303	0.0	1.0	1.0
+MRPS15	case_down	-0.136	0.035	1.20e-04	0.303	0.0	1.0	1.0
+CYSTM1	case_down	-0.208	0.055	1.61e-04	0.303	0.0	1.0	1.0
+CALHM4	case_down	-0.082	0.022	1.61e-04	0.303	0.0	1.0	1.0
+MTX2	case_down	-0.152	0.040	1.65e-04	0.303	0.0	1.0	1.0
+FRMD3	case_down	-0.227	0.061	1.84e-04	0.303	0.0	1.0	1.0
+MRPL27	case_down	-0.132	0.035	1.96e-04	0.303	0.0	1.0	1.0
+MRPL15	case_down	-0.165	0.044	2.00e-04	0.303	0.0	1.0	1.0
+HRC	case_down	-0.144	0.039	2.06e-04	0.303	0.0	1.0	1.0
+SDHD	case_down	-0.169	0.046	2.40e-04	0.303	0.0	1.0	1.0
+PSMA6	case_up	0.150	0.041	2.49e-04	0.303	9.0	1.0	1.0
+LARP7	case_down	-0.106	0.029	2.76e-04	0.303	0.0	1.0	1.0
+CPTP	case_down	-0.298	0.082	2.79e-04	0.303	0.0	1.0	1.0

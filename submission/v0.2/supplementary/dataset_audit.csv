@@ -1,0 +1,8 @@
+accession,organism_verbatim,platform_GPL,gdstype,assay_detected,n_total,n_cases,n_controls,decision,trigger_field,trigger_value
+GSE111006,Homo sapiens,GPL16791; Illumina HiSeq 2500,Expression profiling by high throughput sequencing,bulk_transcriptomics,40,4,28,INCLUDE,organism+phenotype+n,Homo sapiens; external_test_candidate; n=40
+GSE111010,Homo sapiens,GPL16791; Illumina HiSeq 2500,Expression profiling by high throughput sequencing,bulk_transcriptomics,39,9,14,INCLUDE,organism+phenotype+n,Homo sapiens; external_test_candidate; n=39
+GSE111016,Homo sapiens,GPL16791; Illumina HiSeq 2500,Expression profiling by high throughput sequencing,bulk_transcriptomics,40,20,20,INCLUDE,organism+phenotype+n,Homo sapiens; external_test_candidate; n=40
+GSE226151,Homo sapiens,GPL16791; Illumina HiSeq 2500,Expression profiling by high throughput sequencing,bulk_transcriptomics,60,20,20,INCLUDE,organism+phenotype+n,Homo sapiens; frozen_training_candidate; n=60
+GSE164471,Homo sapiens,Illumina HiSeq 2500,Expression profiling by high throughput sequencing,bulk_transcriptomics,53,0,0,REJECT,recommended_model_role,exclude_until_phenotype_table_recovered
+GSE1428,Homo sapiens,GPL96 Affymetrix Human Genome U133A Array,Expression profiling by array,bulk_transcriptomics,22,0,0,REJECT,recommended_model_role,exclude_from_primary_validation
+GSE277819,Homo sapiens,GPL24676 Illumina NovaSeq 6000,Expression profiling by high throughput sequencing,bulk_transcriptomics,81,0,0,REJECT,recommended_model_role,exclude_from_primary_validation

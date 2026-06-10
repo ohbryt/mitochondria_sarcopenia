@@ -1,0 +1,5 @@
+cohort	n_samples	n_cases	n_controls	n_genes_tested	used_covariates	dropped_covariates
+GSE111006_HSS	32	4	28	15362	sarcopenia,age_z	sex_constant,source_platform_not_estimable_within_cohort,batch_not_available
+GSE111010_JSS	23	9	14	14914	sarcopenia,age_z	sex_constant,source_platform_not_estimable_within_cohort,batch_not_available
+GSE111016_SSS	40	20	20	37073	sarcopenia,age_z	sex_constant,source_platform_not_estimable_within_cohort,batch_not_available
+GSE226151	40	20	20	17988	sarcopenia,age_z,sex_male	source_platform_not_estimable_within_cohort,batch_not_available

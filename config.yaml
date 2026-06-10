@@ -1,0 +1,55 @@
+# HMSR sarcopenia — central pipeline configuration
+# multiomics-analysis skill STEP 2 companion
+
+project:
+  name: hmsr-sarcopenia
+  version: "0.1"
+  base_dir: /Volumes/4TB/exerciseomics/sarcopenia-multiomic-resource
+
+# STEP 1 — Selection gates
+allowed_organisms:
+  - "Homo sapiens"
+
+allowed_modalities:
+  - bulk_transcriptomics
+
+allowed_assays:
+  - RNA-seq
+  - microarray
+
+min_cases: 2
+min_controls: 2
+
+# STEP 3 — Statistical parameters
+fdr_method: BH                    # Benjamini-Hochberg
+fdr_threshold_per_cohort: 0.10    # per-cohort nominal gate
+fdr_scope: genome_wide            # applied over all tested genes
+
+# WP3 meta-analysis
+meta_method: DerSimonian-Laird    # random-effects estimator
+meta_p_gate: 0.005                # WP3 multi-criteria gate threshold
+direction_consistency_gate: 1.0
+loco_replication_rate_gate: 1.0
+heterogeneity_i2_max: 50.0        # flag if I² ≥ 50%
+
+# DE method note (STEP 3 deviation from skill default)
+de_method: OLS                    # statsmodels OLS on TMM log2 CPM
+de_method_justification: >
+  Input expression matrices are TMM-normalized log2 CPM (pre-normalized by GEO
+  submitters or recomputed from raw counts). DESeq2/edgeR require raw integer
+  counts and are not appropriate for these inputs. OLS on normalized log-scale
+  data is the standard alternative and is consistent with limma-trend practice.
+
+# STEP 2 — Seeds for reproducibility
+random_seed: 42
+
+# Paths
+paths:
+  validation_dir: data/validation_cohorts
+  inventory: output/validation/cohort_inventory.tsv
+  output_signatures: output/signatures
+  output_figures: output/figures
+  output_tables: output/manuscript_tables
+  checksums: data/CHECKSUMS.txt
+  modality_detected: results/modality_detected.csv
+  dataset_audit: results/dataset_audit.csv

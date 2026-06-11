@@ -1,5 +1,5 @@
-# SHA-256 checksums for HMSR WP3 + WP3b outputs
-# Regenerated 2026-06-10
+# SHA-256 checksums for HMSR WP3 + WP3b + WP3c outputs
+# Regenerated 2026-06-11
 
 b97d9267dd09d37bf8990f17bb1a31a12fa30bbe27e41fee6279827b02fb7447  output/signatures/replication_matrix.tsv
 3d9d166112611c08767e729c52211b48e40d211a92b753574be4ee0441439b87  output/signatures/differential_by_cohort.tsv
@@ -8,3 +8,5 @@ d5400bf261e8c80f676f17691529e684a8a88b672ae5b43115b6b4b4afbb4f81  output/signatu
 459b058865d96889194bd653e17e2f46d77e17bf27a77a069549d03d84a5ea1d  output/signatures/module_differential_by_cohort.tsv
 c35120710a5d287c7ba6b0c2101fdea072ab320c11f50e57186a765b7f9e64a4  output/signatures/wp3b_confound_sensitivity.tsv
 41efc86da80904c9e3e5fb1bd9392fabf53494e25d26736dbcd8decbeaf48b5e  output/signatures/wp3b_mito_enrichment_adjusted.tsv
+e97667cf4b1771dda2321da5a40b24936c2b70c892feb2d522941fb39a8fb207  output/signatures/wp3c_pathway_enrichment.tsv
+11564183abf3a207753f71bd92898a9fd2f26d8874b3ea04b39835c69ae1f643  output/signatures/wp3c_permutation.tsv

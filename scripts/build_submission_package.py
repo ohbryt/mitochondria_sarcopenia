@@ -17,8 +17,8 @@ import subprocess
 from pathlib import Path
 
 BASE = Path("/Volumes/4TB/exerciseomics/sarcopenia-multiomic-resource")
-OUT = BASE / "submission" / "v0.2"
-GEN_DATE = "2026-06-10"  # passed explicitly; no Date.now in builds
+OUT = BASE / "submission" / "v0.3"
+GEN_DATE = "2026-06-11"  # passed explicitly; no Date.now in builds
 
 
 def sha256(p: Path) -> str:
@@ -35,17 +35,19 @@ def git_head() -> str:
 
 
 # (source_path, dest_relative_path)
-MANUSCRIPT = (BASE / "manuscripts" / "paper1_v0.2.md", "paper1_sarcopenia_v0.2.md")
+MANUSCRIPT = (BASE / "manuscripts" / "paper1_v0.3.md", "paper1_sarcopenia_v0.3.md")
 
 FIGURES = [
     (BASE / "output/figures/Fig1_study_overview.png", "figures/Fig1_study_overview.png"),
     (BASE / "output/figures/Fig2_forest_plots.png", "figures/Fig2_forest_plots.png"),
     (BASE / "output/figures/Fig3_volcano_meta.png", "figures/Fig3_volcano_meta.png"),
     (BASE / "output/figures/Fig4_heatmap_top50.png", "figures/Fig4_heatmap_top50.png"),
+    (BASE / "output/figures/Fig5_pathway_enrichment.png", "figures/Fig5_pathway_enrichment.png"),
     (BASE / "output/figures/Fig1_study_overview.pdf", "figures/Fig1_study_overview.pdf"),
     (BASE / "output/figures/Fig2_forest_plots.pdf", "figures/Fig2_forest_plots.pdf"),
     (BASE / "output/figures/Fig3_volcano_meta.pdf", "figures/Fig3_volcano_meta.pdf"),
     (BASE / "output/figures/Fig4_heatmap_top50.pdf", "figures/Fig4_heatmap_top50.pdf"),
+    (BASE / "output/figures/Fig5_pathway_enrichment.pdf", "figures/Fig5_pathway_enrichment.pdf"),
 ]
 
 SUPPLEMENTARY = [
@@ -55,6 +57,8 @@ SUPPLEMENTARY = [
     (BASE / "output/manuscript_tables/TableS1_all195_gate_pass.tsv", "supplementary/TableS1_all195_gate_pass.tsv"),
     (BASE / "output/signatures/wp3b_confound_sensitivity.tsv", "supplementary/TableS3_confound_sensitivity.tsv"),
     (BASE / "output/signatures/wp3b_mito_enrichment_adjusted.tsv", "supplementary/TableS4_mito_enrichment_adjusted.tsv"),
+    (BASE / "output/signatures/wp3c_permutation.tsv", "supplementary/TableS5_permutation_enrichment.tsv"),
+    (BASE / "output/signatures/wp3c_pathway_enrichment.tsv", "supplementary/TableS5b_descriptive_enrichment.tsv"),
     (BASE / "manuscripts/experimental_validation_plan_v0.1.md", "supplementary/experimental_validation_plan_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.1.md", "supplementary/internal_critical_review_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.2.md", "supplementary/internal_critical_review_v0.2.md"),
@@ -78,7 +82,9 @@ def gen_reproducibility_receipt(head: str) -> str:
         ("pipeline/recompute_disease_signatures.py", "WP3 DE + DL random-effects meta + gate"),
         ("pipeline/split_regulatory_exercise_evidence.py", "WP5 evidence split"),
         ("scripts/confound_sensitivity.py", "WP3b composition + genomic-control sensitivity"),
-        ("scripts/make_manuscript_figures.py", "Figures 1-4 + Tables 1-3"),
+        ("scripts/pathway_permutation.py", "WP3c correlation-aware label-permutation gene-set test"),
+        ("scripts/pathway_enrichment.py", "WP3c descriptive AUC effect sizes"),
+        ("scripts/make_manuscript_figures.py", "Figures 1-5 + Tables 1-3"),
         ("scripts/verify.py", "Terminal verifier gate"),
     ]
     lines = [

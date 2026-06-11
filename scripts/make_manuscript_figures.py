@@ -412,6 +412,60 @@ def fig4_heatmap() -> None:
     print(f"Fig 4 → {FIGS/'Fig4_heatmap_top50.png'}")
 
 
+# ── Figure 5 — mitochondrial pathway enrichment (permutation) ────────────
+def fig5_pathway_enrichment() -> None:
+    perm_path = SIG / "wp3c_permutation.tsv"
+    if not perm_path.exists():
+        print("Fig 5 skipped (run pathway_permutation.py first)")
+        return
+    pm = pd.read_csv(perm_path, sep="\t")
+    label = {
+        "Mito_ALL": "Mitochondrial programme (all)",
+        "Mito_ComplexI_NDUF": "  Complex I (NDUF)",
+        "Mito_ComplexII_III_IV": "  Complex II/III/IV",
+        "Mito_ComplexV_ATP5": "  Complex V (ATP5)",
+        "Mito_mitoribosome": "  Mitoribosome (MRPL/MRPS)",
+        "Mito_cristae_MICOS": "  Cristae / MICOS",
+        "Mito_import_TIMM_TOMM": "  Import (TIMM/TOMM)",
+        "Control_proteasome": "Control: proteasome",
+        "Control_cyto_ribosome": "Control: cytoplasmic ribosome",
+        "Control_collagen": "Control: collagen / ECM",
+    }
+    pm = pm[pm.gene_set.isin(label)].copy()
+    pm["lab"] = pm.gene_set.map(label)
+    pm["is_mito"] = pm.gene_set.str.startswith("Mito")
+    pm = pm.sort_values("observed_diff")
+
+    fig, ax = plt.subplots(figsize=(9, 6))
+    ypos = np.arange(len(pm))
+    colors = ["#C44E52" if m else "#888888" for m in pm.is_mito]
+    ax.barh(ypos, pm.observed_diff, color=colors, edgecolor="#333", linewidth=0.6)
+    # error bars from null SD (permutation spread)
+    ax.errorbar(pm.observed_diff, ypos, xerr=pm.null_sd, fmt="none",
+                ecolor="#444", elinewidth=0.8, capsize=2)
+    ax.axvline(0, color="#000", lw=0.8)
+    ax.set_yticks(ypos)
+    ax.set_yticklabels(pm.lab, fontsize=8)
+    ax.set_xlabel("Competitive shift in meta-z (in-set − out-set)", fontsize=9)
+    ax.set_title("Figure 5. Coordinated down-regulation of the mitochondrial gene programme\n"
+                 "Label-permutation competitive test (N=2000, correlation-aware); "
+                 "error bars = permutation-null SD", fontsize=9, fontweight="bold")
+    # annotate permutation p
+    for y, (_, r) in zip(ypos, pm.iterrows()):
+        ptxt = f"p={r.perm_p_one_sided_down:.1e}" if r.is_mito else f"p={r.perm_p_one_sided_down:.2f} (ns)"
+        ax.text(r.observed_diff - np.sign(r.observed_diff) * 0.04 - 0.02, y, ptxt,
+                va="center", ha="right" if r.observed_diff < 0 else "left", fontsize=6.5, color="#222")
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.text(0.02, 0.02,
+            "Mitochondrial sub-programmes (red) all shift down (p≤6e-3);\n"
+            "cytoplasmic ribosome & proteasome controls not significant; collagen shifts up.",
+            transform=ax.transAxes, fontsize=7, color="#555", va="bottom")
+    for ext in ("pdf", "png"):
+        fig.savefig(FIGS / f"Fig5_pathway_enrichment.{ext}", dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Fig 5 → {FIGS/'Fig5_pathway_enrichment.png'}")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating manuscript tables...")
@@ -425,6 +479,7 @@ if __name__ == "__main__":
     fig2_forest_plots()
     fig3_volcano()
     fig4_heatmap()
+    fig5_pathway_enrichment()
 
     print("\nDone. All outputs in:")
     print(f"  Tables: {TABLES}")

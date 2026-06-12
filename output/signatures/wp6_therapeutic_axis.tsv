@@ -1,0 +1,14 @@
+gene	role	meta_direction	meta_beta	meta_p_value	meta_fdr	n_cohorts
+HPGD	15-PGDH — prostaglandin-degrading enzyme (drug target in companion Perspective)	case_down	-0.003	0.980999472949136	0.998	4
+PTGES	PGE2 synthase	case_up	0.08	0.3057070730131362	0.917	2
+PTGS2	COX-2 (PGE2 synthesis)	case_up	0.054	0.8395333635199985	0.985	3
+PTGER4	EP4 (PGE2 receptor)	case_down	-0.102	0.1125937607096847	0.88	4
+PTGER2	EP2 (PGE2 receptor)	case_up	0.073	0.4943033279978416	0.928	2
+FBXO32	atrogin-1/MAFbx (atrophy ubiquitin ligase)	case_up	0.053	0.4574654118271417	0.927	4
+TRIM63	MuRF1 (atrophy ubiquitin ligase)	case_down	-0.021	0.873363072340862	0.989	4
+TGFB1	TGF-beta1	case_down	-0.029	0.6852580097808645	0.959	4
+MSTN	myostatin	case_up	0.026	0.8079318443670909	0.981	4
+ACVR2B	ActRIIB (bimagrumab target)	case_up	0.104	0.4067409393465993	0.921	4
+FST	follistatin	case_up	0.215	0.3187587870762765	0.917	4
+PPARGC1A	PGC-1alpha (mitochondrial biogenesis master regulator)	case_down	-0.114	0.1004903031186977	0.88	4
+TFAM	mtDNA transcription/biogenesis	case_down	-0.02	0.6802116085635054	0.957	4

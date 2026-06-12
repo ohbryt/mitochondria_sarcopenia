@@ -1,6 +1,6 @@
-| Cohort ID     | GEO Accession   | Country       | Sex    | Study design   |   Total samples |   Cases |   Controls |   Genes tested | Covariates                  |
-|:--------------|:----------------|:--------------|:-------|:---------------|----------------:|--------:|-----------:|---------------:|:----------------------------|
-| GSE111006 HSS | GSE111006       | South Korea   | Male   | Case/control   |              32 |       4 |         28 |         15,362 | sarcopenia, age_z           |
-| GSE111010 JSS | GSE111010       | Jamaica       | Male   | Case/control   |              23 |       9 |         14 |         14,914 | sarcopenia, age_z           |
-| GSE111016 SSS | GSE111016       | South Korea   | Female | Case/control   |              40 |      20 |         20 |         37,073 | sarcopenia, age_z           |
-| GSE226151     | GSE226151       | USA (GESTALT) | Both   | Case/control   |              40 |      20 |         20 |         17,988 | sarcopenia, age_z, sex_male |
+| Cohort ID     | GEO Accession   | Country                       | Sex   | Study design   |   Total samples |   Cases |   Controls |   Genes tested | Covariates                  |
+|:--------------|:----------------|:------------------------------|:------|:---------------|----------------:|--------:|-----------:|---------------:|:----------------------------|
+| GSE111006 HSS | GSE111006       | Hertfordshire, UK (Caucasian) | Male  | Case/control   |              32 |       4 |         28 |         15,362 | sarcopenia, age_z           |
+| GSE111010 JSS | GSE111010       | Jamaica (Afro-Caribbean)      | Male  | Case/control   |              23 |       9 |         14 |         14,914 | sarcopenia, age_z           |
+| GSE111016 SSS | GSE111016       | Singapore (Chinese)           | Male  | Case/control   |              40 |      20 |         20 |         37,073 | sarcopenia, age_z           |
+| GSE226151     | GSE226151       | Independent cohort (n.s.)     | Both  | Case/control   |              40 |      20 |         20 |         17,988 | sarcopenia, age_z, sex_male |

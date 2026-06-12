@@ -17,8 +17,8 @@ import subprocess
 from pathlib import Path
 
 BASE = Path("/Volumes/4TB/exerciseomics/sarcopenia-multiomic-resource")
-OUT = BASE / "submission" / "v0.3"
-GEN_DATE = "2026-06-11"  # passed explicitly; no Date.now in builds
+OUT = BASE / "submission" / "v0.4"
+GEN_DATE = "2026-06-12"  # passed explicitly; no Date.now in builds
 
 
 def sha256(p: Path) -> str:
@@ -35,7 +35,7 @@ def git_head() -> str:
 
 
 # (source_path, dest_relative_path)
-MANUSCRIPT = (BASE / "manuscripts" / "paper1_v0.3.md", "paper1_sarcopenia_v0.3.md")
+MANUSCRIPT = (BASE / "manuscripts" / "paper1_v0.4.md", "paper1_sarcopenia_v0.4.md")
 
 FIGURES = [
     (BASE / "output/figures/Fig1_study_overview.png", "figures/Fig1_study_overview.png"),
@@ -59,6 +59,8 @@ SUPPLEMENTARY = [
     (BASE / "output/signatures/wp3b_mito_enrichment_adjusted.tsv", "supplementary/TableS4_mito_enrichment_adjusted.tsv"),
     (BASE / "output/signatures/wp3c_permutation.tsv", "supplementary/TableS5_permutation_enrichment.tsv"),
     (BASE / "output/signatures/wp3c_pathway_enrichment.tsv", "supplementary/TableS5b_descriptive_enrichment.tsv"),
+    (BASE / "output/signatures/wp6_therapeutic_axis.tsv", "supplementary/TableS6_therapeutic_axis.tsv"),
+    (BASE / "manuscripts/CODEX_REVIEW_v0.3.md", "supplementary/codex_adversarial_review_v0.3.md"),
     (BASE / "manuscripts/experimental_validation_plan_v0.1.md", "supplementary/experimental_validation_plan_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.1.md", "supplementary/internal_critical_review_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.2.md", "supplementary/internal_critical_review_v0.2.md"),
@@ -139,7 +141,8 @@ consideration as a resource/discovery study.
 
 Sarcopenia lacks a consensus molecular signature. We assemble a reproducible
 transcriptomic meta-analysis across two independent human studies (four sample
-sets; GSE111017 family + GESTALT) using cohort-stratified differential
+sets; the Hertfordshire/Jamaica/Singapore Sarcopenia Study family + an independent
+cohort, GSE226151) using cohort-stratified differential
 expression and DerSimonian-Laird random-effects meta-analysis over 37,469 genes.
 We report transparently that **no gene survives genome-wide FDR**, and we treat
 downstream gene lists as exploratory candidates from a clearly-disclosed post-hoc

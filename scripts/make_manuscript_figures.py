@@ -52,7 +52,7 @@ COHORT_LABELS = {
     "GSE111006_HSS": "HSS\n(GSE111006)",
     "GSE111010_JSS": "JSS\n(GSE111010)",
     "GSE111016_SSS": "SSS\n(GSE111016)",
-    "GSE226151":     "GESTALT\n(GSE226151)",
+    "GSE226151":     "MOS\n(GSE226151)",
 }
 COHORT_COLORS = {
     "GSE111006_HSS": "#4C72B0",
@@ -71,10 +71,10 @@ mod  = pd.read_csv(SIG / "model_audit.tsv", sep="\t")
 # ── Table 1 — Cohort characteristics ────────────────────────────────────
 def make_table1() -> pd.DataFrame:
     cohort_meta = {
-        "GSE111006_HSS": dict(country="South Korea", sex="Male", design="Case/control"),
-        "GSE111010_JSS": dict(country="Jamaica",     sex="Male", design="Case/control"),
-        "GSE111016_SSS": dict(country="South Korea", sex="Female", design="Case/control"),
-        "GSE226151":     dict(country="USA (GESTALT)", sex="Both", design="Case/control"),
+        "GSE111006_HSS": dict(country="Hertfordshire, UK (Caucasian)", sex="Male", design="Case/control"),
+        "GSE111010_JSS": dict(country="Jamaica (Afro-Caribbean)",     sex="Male", design="Case/control"),
+        "GSE111016_SSS": dict(country="Singapore (Chinese)", sex="Male", design="Case/control"),
+        "GSE226151":     dict(country="Independent cohort (n.s.)", sex="Both", design="Case/control"),
     }
     rows = []
     for _, r in mod.iterrows():
@@ -142,7 +142,7 @@ def make_table3() -> pd.DataFrame:
     t = ox[cols].copy()
     t.columns = (["Gene", "Function", "OXPHOS subunit", "Mitochondrial",
                   "β (RE meta)", "SE", "p (meta)", "FDR (BH)", "I² (%)"] +
-                 ["β HSS", "β JSS", "β SSS", "β GESTALT"])
+                 ["β HSS", "β JSS", "β SSS", "β MOS"])
     for col in ["β (RE meta)", "SE"]:
         t[col] = t[col].map("{:.4f}".format)
     t["p (meta)"] = t["p (meta)"].map("{:.2e}".format)
@@ -190,7 +190,7 @@ def fig1_study_overview() -> None:
         ("HSS\n(GSE111006)\nn=32", 1.5, 7.5, COHORT_COLORS["GSE111006_HSS"]),
         ("JSS\n(GSE111010)\nn=23", 3.5, 7.5, COHORT_COLORS["GSE111010_JSS"]),
         ("SSS\n(GSE111016)\nn=40", 5.5, 7.5, COHORT_COLORS["GSE111016_SSS"]),
-        ("GESTALT\n(GSE226151)\nn=40", 7.5, 7.5, COHORT_COLORS["GSE226151"]),
+        ("MOS\n(GSE226151)\nn=40", 7.5, 7.5, COHORT_COLORS["GSE226151"]),
     ]
     for label, x, y, color in cohort_info:
         box(x, y, 1.7, 1.2, label, color=color + "55", fontsize=8)
@@ -211,7 +211,7 @@ def fig1_study_overview() -> None:
 
     box(4.5, 4.2, 5.5, 0.8,
         "WP3 Gate: meta-p < 0.005 · direction = 1.0 · LOCO = 1.0 · I² < 50%\n"
-        "→ 195 replicated genes  (141↓  54↑)",
+        "→ 195 candidate genes  (141↓  54↑)",
         color="#FFF0F0", fontsize=8.5, bold=False)
 
     arrow(4.5, 3.8, 4.5, 3.1)
@@ -239,7 +239,7 @@ def fig1_study_overview() -> None:
 # ── Figure 2 — Forest plots for 7 OXPHOS genes ──────────────────────────
 def fig2_forest_plots() -> None:
     cohorts = ["GSE111006_HSS", "GSE111010_JSS", "GSE111016_SSS", "GSE226151"]
-    short   = ["HSS", "JSS", "SSS", "GESTALT"]
+    short   = ["HSS", "JSS", "SSS", "MOS"]
 
     fig = plt.figure(figsize=(14, 12))
     gs = gridspec.GridSpec(4, 2, hspace=0.55, wspace=0.35)
@@ -329,15 +329,15 @@ def fig3_volcano() -> None:
     fig, ax = plt.subplots(figsize=(8, 6))
     # Background
     ax.scatter(df.loc[~gate, "meta_beta"], df.loc[~gate, "neg_log10_p"],
-               c="#DDDDDD", s=5, alpha=0.4, lw=0, rasterized=True, label="Not replicated")
+               c="#DDDDDD", s=5, alpha=0.4, lw=0, rasterized=True, label="Not gate-pass")
     # Gate-pass down
     m = gate & (df["meta_beta"] < 0)
     ax.scatter(df.loc[m, "meta_beta"], df.loc[m, "neg_log10_p"],
-               c="#4C72B0", s=12, alpha=0.8, lw=0, label=f"Replicated ↓ (n={m.sum()})")
+               c="#4C72B0", s=12, alpha=0.8, lw=0, label=f"Gate-pass ↓ (n={m.sum()})")
     # Gate-pass up
     m = gate & (df["meta_beta"] > 0)
     ax.scatter(df.loc[m, "meta_beta"], df.loc[m, "neg_log10_p"],
-               c="#C44E52", s=12, alpha=0.8, lw=0, label=f"Replicated ↑ (n={m.sum()})")
+               c="#C44E52", s=12, alpha=0.8, lw=0, label=f"Gate-pass ↑ (n={m.sum()})")
 
     # Label 7 OXPHOS genes
     ox_df = df[df.gene_symbol.isin(OXPHOS_GENES)]
@@ -387,7 +387,7 @@ def fig4_heatmap() -> None:
                    vmin=-vmax, vmax=vmax, interpolation="nearest")
 
     ax.set_xticks(range(4))
-    ax.set_xticklabels(["HSS", "JSS", "SSS", "GESTALT"], fontsize=9, fontweight="bold")
+    ax.set_xticklabels(["HSS", "JSS", "SSS", "MOS"], fontsize=9, fontweight="bold")
     ax.set_yticks(range(len(top50)))
     ax.set_yticklabels(top50, fontsize=7)
     ax.tick_params(top=True, labeltop=True, bottom=False, labelbottom=False)

@@ -1,4 +1,4 @@
-# SHA-256 checksums HMSR WP3/3b/3c/6
+# SHA-256 checksums HMSR WP3/3b/3c/3d/3e/6
 # Regenerated 2026-06-12
 
 b97d9267dd09d37bf8990f17bb1a31a12fa30bbe27e41fee6279827b02fb7447  output/signatures/replication_matrix.tsv
@@ -11,3 +11,5 @@ c35120710a5d287c7ba6b0c2101fdea072ab320c11f50e57186a765b7f9e64a4  output/signatu
 e97667cf4b1771dda2321da5a40b24936c2b70c892feb2d522941fb39a8fb207  output/signatures/wp3c_pathway_enrichment.tsv
 11564183abf3a207753f71bd92898a9fd2f26d8874b3ea04b39835c69ae1f643  output/signatures/wp3c_permutation.tsv
 3cf4814b77b2da9e4cc9c7232ff07d23816a411a3de3cf7d5df48fbe36a05d74  output/signatures/wp6_therapeutic_axis.tsv
+3066a20f83b582cbf8dd0af1cbb6e32316da4464c2cb5bbe5a5dcd40ee5d8fb4  output/signatures/wp3d_freedman_lane.tsv
+bb1a80302b13546673a5caac5b945010c0e0ae43e95a568f26e31d2b79e4339f  output/signatures/wp3e_libsize_sensitivity.tsv

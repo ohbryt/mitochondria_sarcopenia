@@ -166,9 +166,14 @@ the entire per-gene (Stouffer) meta statistic, and rebuild the gene-set statisti
 2,000 times (`scripts/pathway_permutation.py`). Because every gene is recomputed under
 the same permuted labels, the gene–gene correlation structure is preserved in the
 null, making this a correlation-aware test (the permutation analogue of CAMERA's
-variance inflation). One caveat (see Limitations): labels are permuted while the
-age/sex covariates are held fixed, so the null is not fully covariate-exchangeable; a
-Freedman–Lane residual permutation is the planned refinement.
+variance inflation). One caveat: labels are permuted while the age/sex covariates are
+held fixed, so this null is not fully covariate-exchangeable. We therefore repeated the
+test with a **Freedman–Lane residual permutation** (regress expression on the covariates,
+permute the reduced-model residuals, refit the full model; N = 2,000), which respects
+the covariate structure. The result is essentially unchanged: the mitochondrial programme
+remains down at *p* = 1.0×10⁻³, all six sub-programmes at *p* ≤ 5.5×10⁻³, and the
+non-mitochondrial controls remain non-significant (Table S7;
+`scripts/sensitivity_freedman_libsize.py`).
 
 Under this null, the mitochondrial programme is significantly down-regulated
 (permutation *p* = 2.0×10⁻³; 3.2 SD below the permutation-null mean), and — notably —
@@ -264,13 +269,22 @@ The signal **survives composition adjustment**:
 
 This argues **against** the simplest purity-artifact explanation: the coordinated
 mitochondrial down-regulation is not merely a consequence of stromal/immune
-contamination. Two caveats remain: (i) we lack per-sample RNA-integrity (RIN) and
-true cell-fraction measurements, so a non-composition technical factor in the
-high-λ MOS cohort cannot be fully excluded; (ii) the residual inflation in
-MOS is consistent with either a strong genuine transcriptome-wide effect or an
-unmeasured batch/quality factor. The decisive resolution is cell-type deconvolution
-on data with QC metadata, and ultimately the controlled-perturbation experiments in
-the companion plan.
+contamination.
+
+We further controlled for **sequencing depth**, because cases had ~7–9% lower library
+size than controls in three of four cohorts (JSS 0.93, SSS 0.93, MOS 0.91; a potential
+compositional confound). Re-fitting every gene with per-sample log₁₀(library size) as
+an added covariate (WP3e; from `raw_counts.tsv`) left the highlighted genes essentially
+unchanged — the same 4 of 7 remain meta-*p* < 0.005 (CHCHD10 8.6×10⁻⁶, CLTB 1.5×10⁻⁵,
+MRPL33 2.5×10⁻³, MRPL34 2.5×10⁻³; APOO/NDUFB4/ATP5F1B attenuate to 0.0076–0.050) and the
+mitochondrial enrichment persists (Table S8).
+
+Two caveats remain: (i) we lack per-sample RNA-integrity (RIN) measurements, so a
+non-composition technical factor in the high-λ MOS cohort cannot be fully excluded; (ii)
+the residual inflation in MOS is consistent with either a strong genuine transcriptome-wide
+effect or an unmeasured batch/quality factor. The decisive resolution is cell-type
+deconvolution on data with QC metadata, and ultimately the controlled-perturbation
+experiments in the companion plan.
 
 ### Exercise epigenetic evidence: a gap, not a link
 
@@ -340,14 +354,13 @@ are underpowered (HSS has 4 cases). (4) Cross-sectional expression cannot establ
 causation, and "biogenesis-programme down-regulation" is a transcript-level
 statement — it does not directly measure mitochondrial content, respiration, or flux.
 (5) The exercise epigenetic integration crosses species and shows no overlap with the
-candidate genes. (6) The permutation null permutes labels with age/sex covariates held
-fixed; a Freedman–Lane residual permutation is the planned refinement, and the
-case–control age gap in the two driver cohorts (SSS 72.8 vs 70.2 y; MOS 71.6 vs 67.7 y)
-warrants an age-matched sensitivity. (7) RNA-integrity/batch metadata are unavailable;
-a derivable library-size/total-count QC covariate (MOS case/control read-depth ratio
-0.91) is a feasible, not-yet-run sensitivity, and the residual test-statistic inflation
-in MOS (λ=1.93, not lowered by composition adjustment) leaves a non-composition
-technical factor incompletely excluded.
+candidate genes. (6) The label-permutation null holds age/sex fixed; a covariate-
+exchangeable **Freedman–Lane permutation gives the same result** (Table S7), and the
+mitochondrial signal also survives a **library-size (sequencing-depth) covariate**
+(Table S8) — but a formal age-matched subset and cell-type deconvolution on QC-annotated
+data remain outstanding. (7) RNA-integrity/batch metadata are unavailable, and the
+residual test-statistic inflation in MOS (λ = 1.93, not lowered by composition or
+library-size adjustment) leaves a non-composition technical factor incompletely excluded.
 
 **Implications.** HMSR is best used as a **pathway-level discovery resource**
 pointing to mitochondrial gene-programme down-regulation — human transcriptomic
@@ -454,6 +467,8 @@ up. Source: `output/signatures/wp3c_permutation.tsv`.
 **Table S3.** Per-set significance and functional classification of highlighted candidates.
 **Table S5.** Gene-set permutation enrichment (`wp3c_permutation.tsv`) and descriptive AUC (`wp3c_pathway_enrichment.tsv`).
 **Table S6.** Therapeutic-axis transparency projection (`wp6_therapeutic_axis.tsv`): 15-PGDH/*HPGD*, PGE₂-axis, atrogene, myostatin-axis, and biogenesis genes in HMSR — none reach FDR<0.10; provided so readers can see the muscle-quality-pathway genes directly. Transcript-level, not an enzyme-activity test.
+**Table S7.** Freedman–Lane covariate-exchangeable permutation enrichment (`wp3d_freedman_lane.tsv`): mitochondrial sub-programmes vs controls under a covariate-respecting null.
+**Table S8.** Library-size (sequencing-depth) covariate sensitivity for the highlighted genes (`wp3e_libsize_sensitivity.tsv`).
 
 ---
 
@@ -474,5 +489,5 @@ up. Source: `output/signatures/wp3c_permutation.tsv`.
 11. [Companion Perspective] "Sarcopenia drug development has optimized the wrong variable: the case for targeting muscle quality." Manuscript in preparation (the muscle-quality reframe and 15-PGDH/PGE₂ nomination cited here as conceptual context). *Cited as an unpublished companion manuscript; not used as empirical support.*
 
 ---
-*Manuscript version: v0.4 — 2026-06-12. Response to Codex adversarial review (`CODEX_REVIEW_v0.3.md`): **corrected Table 1 demographics from the actual GEO metadata** (HSS = Hertfordshire/UK/Caucasian/male; JSS = Jamaica/Afro-Caribbean/male; SSS = Singapore/Chinese/male; GSE226151 relabelled "MOS", an independent cohort — NOT GESTALT/GSE164471) and propagated the fix through all prose; clarified the Stouffer-vs-DL meta statistic for the enrichment headline; purged "replicated" from figures (now "candidate"/"gate-pass"); softened "collapse" to transcript-level down-regulation; added age/library-size/Freedman–Lane items to Limitations. Adds a bounded **translational-context** paragraph linking the mitochondrial finding to the muscle-quality (metabolic-competence) reframe of the companion therapeutics Perspective, with an HPGD transparency note (Table S6). Carries forward v0.2/v0.3 rigor (correlation-aware permutation, composition-robustness, two-study framing, OXPHOS→mitochondrial). See `CRITICAL_REVIEW_v0.1.md` / `CRITICAL_REVIEW_v0.2.md` / `CODEX_REVIEW_v0.3.md`.*
+*Manuscript version: v0.4 — 2026-06-12. Response to Codex adversarial review (`CODEX_REVIEW_v0.3.md`): **corrected Table 1 demographics from the actual GEO metadata** (HSS = Hertfordshire/UK/Caucasian/male; JSS = Jamaica/Afro-Caribbean/male; SSS = Singapore/Chinese/male; GSE226151 relabelled "MOS", an independent cohort — NOT GESTALT/GSE164471) and propagated the fix through all prose; clarified the Stouffer-vs-DL meta statistic for the enrichment headline; purged "replicated" from figures (now "candidate"/"gate-pass"); softened "collapse" to transcript-level down-regulation; **ran the two remaining methodological sensitivities — Freedman–Lane covariate-exchangeable permutation (Table S7) and library-size/sequencing-depth covariate (Table S8) — both confirm the mitochondrial result.** Adds a bounded **translational-context** paragraph linking the mitochondrial finding to the muscle-quality (metabolic-competence) reframe of the companion therapeutics Perspective, with an HPGD transparency note (Table S6). Carries forward v0.2/v0.3 rigor (correlation-aware permutation, composition-robustness, two-study framing, OXPHOS→mitochondrial). See `CRITICAL_REVIEW_v0.1.md` / `CRITICAL_REVIEW_v0.2.md` / `CODEX_REVIEW_v0.3.md`.*
 *All statistics computed by committed pipeline code; no hand-computed values.*

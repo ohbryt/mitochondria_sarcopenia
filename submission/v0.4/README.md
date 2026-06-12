@@ -15,9 +15,9 @@ Eda2r/Hjv rat-exercise paper.
 
 ## Provenance
 - Generated: `2026-06-12`
-- Source repository HEAD: `0024904ae0fac5349317443953f7acfd4fdc6e18`
+- Source repository HEAD: `54839b7ecbbed7a1d9386197abe9106b6de5b723`
 - Builder: `python3 scripts/build_submission_package.py`
-- Verifier: PASS: 33  FAIL: 0 | STATUS=PASS
+- Verifier: PASS: 35  FAIL: 0 | STATUS=PASS
 
 ## Honesty note
 No gene survives genome-wide FDR; gene lists are exploratory candidates from a

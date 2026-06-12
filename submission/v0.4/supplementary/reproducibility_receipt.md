@@ -1,8 +1,8 @@
 # HMSR Sarcopenia Paper 1 — Reproducibility Receipt
 
 **Generated:** 2026-06-12
-**Source repository HEAD:** `0024904ae0fac5349317443953f7acfd4fdc6e18`
-**Verifier:** PASS: 33  FAIL: 0 | STATUS=PASS
+**Source repository HEAD:** `54839b7ecbbed7a1d9386197abe9106b6de5b723`
+**Verifier:** PASS: 35  FAIL: 0 | STATUS=PASS
 **Environment:** `environment.yml` / `environment.lock.yml` (Python 3.14.4; numpy 1.26.4, pandas 2.3.3, scipy 1.17.1, statsmodels 0.14.6, scikit-learn 1.8.0)
 
 ## Code → claim map
@@ -14,6 +14,7 @@
 | `scripts/confound_sensitivity.py` | `30fe547f6fbae158` | WP3b composition + genomic-control sensitivity |
 | `scripts/pathway_permutation.py` | `737685aee666f4fd` | WP3c correlation-aware label-permutation gene-set test |
 | `scripts/pathway_enrichment.py` | `f0195ca91cb584c3` | WP3c descriptive AUC effect sizes |
+| `scripts/sensitivity_freedman_libsize.py` | `9d16f2c2e01759f9` | WP3d Freedman-Lane + WP3e library-size sensitivities |
 | `scripts/make_manuscript_figures.py` | `1e03a36d2b20d202` | Figures 1-5 + Tables 1-3 |
 | `scripts/verify.py` | `db564bb30ea25380` | Terminal verifier gate |
 

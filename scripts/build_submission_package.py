@@ -60,6 +60,8 @@ SUPPLEMENTARY = [
     (BASE / "output/signatures/wp3c_permutation.tsv", "supplementary/TableS5_permutation_enrichment.tsv"),
     (BASE / "output/signatures/wp3c_pathway_enrichment.tsv", "supplementary/TableS5b_descriptive_enrichment.tsv"),
     (BASE / "output/signatures/wp6_therapeutic_axis.tsv", "supplementary/TableS6_therapeutic_axis.tsv"),
+    (BASE / "output/signatures/wp3d_freedman_lane.tsv", "supplementary/TableS7_freedman_lane.tsv"),
+    (BASE / "output/signatures/wp3e_libsize_sensitivity.tsv", "supplementary/TableS8_libsize_sensitivity.tsv"),
     (BASE / "manuscripts/CODEX_REVIEW_v0.3.md", "supplementary/codex_adversarial_review_v0.3.md"),
     (BASE / "manuscripts/experimental_validation_plan_v0.1.md", "supplementary/experimental_validation_plan_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.1.md", "supplementary/internal_critical_review_v0.1.md"),
@@ -86,6 +88,7 @@ def gen_reproducibility_receipt(head: str) -> str:
         ("scripts/confound_sensitivity.py", "WP3b composition + genomic-control sensitivity"),
         ("scripts/pathway_permutation.py", "WP3c correlation-aware label-permutation gene-set test"),
         ("scripts/pathway_enrichment.py", "WP3c descriptive AUC effect sizes"),
+        ("scripts/sensitivity_freedman_libsize.py", "WP3d Freedman-Lane + WP3e library-size sensitivities"),
         ("scripts/make_manuscript_figures.py", "Figures 1-5 + Tables 1-3"),
         ("scripts/verify.py", "Terminal verifier gate"),
     ]

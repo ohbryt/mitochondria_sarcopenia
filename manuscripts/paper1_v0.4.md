@@ -1,10 +1,12 @@
 # A reproducible skeletal-muscle resource reveals coordinated down-regulation of mitochondrial genes in sarcopenia
 
-**Authors:** [Author list TBD]
+**Authors:** Larry Oh
 
-**Affiliations:** [Affiliations TBD]
+**Affiliations:** Brown Biotech, Seoul, South Korea
 
-**Correspondence:** [Corresponding author TBD]
+**Correspondence:** Larry Oh, Brown Biotech, Seoul, South Korea. Email: `ohbryt@gmail.com`
+
+**ORCID:** [TBD — register at https://orcid.org and update before submission]
 
 **Keywords:** sarcopenia, skeletal muscle, transcriptomics, random-effects meta-analysis, mitochondria, mitochondrial translation, mitoribosome, aging
 
@@ -428,7 +430,30 @@ NCBI GEO: GSE111006, GSE111010, GSE111016, GSE226151. Full replication matrix an
 candidate lists in Supplementary Tables S1–S3.
 
 ## Code availability
-[HMSR repository URL TBD].
+HMSR analysis code is publicly available at `https://github.com/BrownBiotech/hmsr-sarcopenia`
+(release tag `v0.4-paper1`, DOI: `10.5281/zenodo.<TBD-auto-on-release>` via Zenodo
+GitHub integration) under the **MIT License** (`LICENSE` file at repository root).
+A one-command re-run and a terminal verifier (`scripts/verify.py`, STATUS=PASS)
+reproduce all reported numbers. Output provenance hashes are in `data/CHECKSUMS.txt`.
+Companion in-vitro / in-vivo validation plan (v0.2, v0.3) is included in the
+`validation/` subdirectory of the repository.
+
+## Competing interests
+The author declares no competing interests. Brown Biotech (the author's
+affiliation) had no role in study design, data analysis, interpretation, or
+the decision to submit the work for publication.
+
+## Funding
+This work was supported by Brown Biotech (internal funding). No external
+funding was received.
+
+## Acknowledgments
+We thank the HMSR validation working group and the Brown Biotech scientific
+advisory board for helpful discussions; the contributors to the HMSR public
+cohorts (GEO accessions GSE111006, GSE111010, GSE111016, GSE226151); and the
+developers of open-source tools used in this work (statsmodels, scipy, pandas,
+matplotlib, Snakemake, Nextflow). Codex (GPT) provided critical adversarial
+review (see Supplementary Codex adversarial review v0.3).
 
 ---
 

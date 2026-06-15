@@ -1,7 +1,7 @@
 # HMSR Sarcopenia Paper 1 — Reproducibility Receipt
 
-**Generated:** 2026-06-12
-**Source repository HEAD:** `54839b7ecbbed7a1d9386197abe9106b6de5b723`
+**Generated:** 2026-06-13
+**Source repository HEAD:** `72ef9ad81e6b4cc7c2d14bf2ef6c75fcb8942d25`
 **Verifier:** PASS: 35  FAIL: 0 | STATUS=PASS
 **Environment:** `environment.yml` / `environment.lock.yml` (Python 3.14.4; numpy 1.26.4, pandas 2.3.3, scipy 1.17.1, statsmodels 0.14.6, scikit-learn 1.8.0)
 

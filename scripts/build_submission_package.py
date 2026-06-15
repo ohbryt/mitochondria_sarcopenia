@@ -7,7 +7,7 @@ supplementary + manifest.tsv with SHA256 + README provenance), but for the
 HMSR mitochondrial-sarcopenia manuscript (distinct from the Eda2r/Hjv paper).
 
 Usage:  python3 scripts/build_submission_package.py
-Output: submission/v0.2/  (under sarcopenia-multiomic-resource)
+Output: submission/v0.4/  (under sarcopenia-multiomic-resource)
 """
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from pathlib import Path
 
 BASE = Path("/Volumes/4TB/exerciseomics/sarcopenia-multiomic-resource")
 OUT = BASE / "submission" / "v0.4"
-GEN_DATE = "2026-06-12"  # passed explicitly; no Date.now in builds
+GEN_DATE = "2026-06-13"  # passed explicitly; no Date.now in builds
 
 
 def sha256(p: Path) -> str:
@@ -64,6 +64,9 @@ SUPPLEMENTARY = [
     (BASE / "output/signatures/wp3e_libsize_sensitivity.tsv", "supplementary/TableS8_libsize_sensitivity.tsv"),
     (BASE / "manuscripts/CODEX_REVIEW_v0.3.md", "supplementary/codex_adversarial_review_v0.3.md"),
     (BASE / "manuscripts/experimental_validation_plan_v0.1.md", "supplementary/experimental_validation_plan_v0.1.md"),
+    (BASE / "manuscripts/experimental_validation_plan_v0.2.md", "supplementary/experimental_validation_plan_v0.2.md"),
+    (BASE / "validation/plan/experimental_validation_plan_v0.3.md", "supplementary/experimental_validation_plan_v0.3.md"),
+    (BASE / "validation/plan/OPEN_ISSUES.md", "supplementary/validation_open_issues.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.1.md", "supplementary/internal_critical_review_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.2.md", "supplementary/internal_critical_review_v0.2.md"),
     (BASE / "results/modality_detected.csv", "supplementary/modality_detected.csv"),
@@ -152,19 +155,35 @@ downstream gene lists as exploratory candidates from a clearly-disclosed post-ho
 gate. The defensible, novel contribution is a **pathway-level finding**:
 coordinated down-regulation of the mitochondrial gene programme (mitoribosome,
 cristae/MICOS, and respiratory-chain genes), which we show is **robust to
-muscle-composition (stromal/immune purity) adjustment** — arguing against a
-simple fiber-loss artifact. We pair the resource with a concrete in vitro/in vivo
-validation plan for the prioritised candidates.
+muscle-composition (stromal/immune purity) adjustment**, to **Freedman–Lane
+covariate-exchangeable permutation**, and to **library-size (sequencing-depth)
+covariate adjustment** — all of which argue against a simple fiber-loss artifact.
+We pair the resource with a concrete in vitro/in vivo validation plan for the
+prioritised candidates (see Supplementary experimental_validation_plan_v0.2 and
+its operationalized v0.3 plan).
 
 We believe this combination — methodological rigor, honest reporting of an FDR
 null, a confound-tested pathway signal, and a forward validation plan — is well
 suited to your readership in muscle physiology and aging biology.
 
 The work is original, not under consideration elsewhere, and all authors approve
-the submission. We declare no competing interests.
+the submission. The author declares no competing interests. Brown Biotech (the
+author's affiliation) had no role in study design, data analysis, interpretation,
+or the decision to submit the work for publication.
+
+**Suggested reviewers (3–5):** [TBD — Larry to provide 3–5 names with brief
+rationale: e.g., 1–2 sarcopenia clinical researchers with EWGSOP experience; 1–2
+muscle mitochondrial biologists; 1–2 biostatisticians with random-effects
+meta-analysis experience.]
+
+**Excluded reviewers:** [TBD — Larry to declare any conflicts (collaborators,
+co-PIs, recent co-authors).]
 
 Sincerely,
-[Corresponding author], on behalf of all authors
+
+**Larry Oh**, on behalf of the author
+Brown Biotech, Seoul, South Korea
+`ohbryt@gmail.com`
 """
 
 AVAILABILITY = """# Code & Data Availability
@@ -174,22 +193,42 @@ All primary data are public on NCBI GEO: GSE111006, GSE111010, GSE111016,
 GSE226151. No new human/animal data were generated for the computational resource.
 
 ## Code
-HMSR analysis code is provided in the repository (`pipeline/`, `scripts/`).
-Environment pinned in `environment.yml` / `environment.lock.yml`. A one-command
-re-run and a terminal verifier (`scripts/verify.py`, STATUS=PASS) reproduce all
-reported numbers. Output provenance hashes are in `data/CHECKSUMS.txt`.
+HMSR analysis code is publicly available at
+`https://github.com/BrownBiotech/hmsr-sarcopenia` (release tag `v0.4-paper1`,
+DOI: `10.5281/zenodo.<TBD-auto-on-release>` via Zenodo GitHub integration) under
+the **MIT License** (`LICENSE` file at repository root).
+
+The code is provided in the repository under `pipeline/`, `scripts/`,
+`validation/`. Environment pinned in `environment.yml` /
+`environment.lock.yml`. A one-command re-run and a terminal verifier
+(`scripts/verify.py`, STATUS=PASS) reproduce all reported numbers. Output
+provenance hashes are in `data/CHECKSUMS.txt`.
+
+The companion in-vitro / in-vivo validation plan (v0.2, v0.3) and its
+operationalized deliverables (construct designs, antibody panel, Seahorse /
+myobundle force SOPs, power analysis, vendor shortlist) are included in the
+`validation/` subdirectory of the repository as supporting documentation and
+are also bundled here as Supplementary files
+(`experimental_validation_plan_v0.2.md`, `experimental_validation_plan_v0.3.md`,
+`validation_open_issues.md`).
 
 ## Bundled supplementary tables
 - Table S1: all 195 candidate genes with full meta-statistics.
 - Table S2 (not bundled; regenerable): full 37,469-gene replication matrix.
 - Table S3: composition-confound sensitivity (WP3b).
 - Table S4: composition-adjusted mitochondrial enrichment per cohort.
+- Table S5: gene-set permutation enrichment + descriptive AUC.
+- Table S6: therapeutic-axis transparency projection (15-PGDH / PGE₂ / atrogene / myostatin / biogenesis).
+- Table S7: Freedman–Lane covariate-exchangeable permutation enrichment.
+- Table S8: library-size (sequencing-depth) covariate sensitivity.
 
 ## Scope / honesty statement
 Gene-level findings are exploratory candidates (no genome-wide FDR survivor); the
-pathway-level mitochondrial signal is robust to composition adjustment but a
-non-composition technical factor in one cohort is not fully excluded without RIN/QC
-metadata. See `internal_critical_review_v0.2.md` for the full self-audit.
+pathway-level mitochondrial signal is robust to composition adjustment, to
+Freedman–Lane permutation, and to library-size adjustment. A non-composition
+technical factor in one cohort is not fully excluded without RIN/QC metadata.
+See `internal_critical_review_v0.2.md` and the Codex adversarial review
+`codex_adversarial_review_v0.3.md` for the full self-audit.
 """
 
 
@@ -227,32 +266,46 @@ def main() -> None:
     copied.append(("supplementary/code_data_availability.md", OUT / "supplementary" / "code_data_availability.md"))
 
     # README
-    readme = f"""# HMSR Sarcopenia Paper 1 — Submission Bundle (v0.2)
+    readme = f"""# HMSR Sarcopenia Paper 1 — Submission Bundle (v0.4)
 
 Self-contained submission bundle for the HMSR mitochondrial-sarcopenia manuscript.
 **Distinct from** `submission/v0.4` in the parent repo, which is the separate
 Eda2r/Hjv rat-exercise paper.
 
 ## Contents
-- `paper1_sarcopenia_v0.2.md` — manuscript (OXPHOS→mitochondrial corrected; post-hoc
-  gate disclosed; two-independent-studies framing; composition-robustness result).
-- `figures/` — Figures 1–4 (PNG + PDF).
-- `supplementary/` — Tables S1/S3/S4, main Tables 1–3, experimental validation plan,
-  two internal critical reviews, modality/dataset audits, reproducibility receipt,
-  cover letter, code/data availability.
+- `paper1_sarcopenia_v0.4.md` — manuscript (v0.4: Codex MAJORs fixed; Table 1
+  demographics corrected from real GEO metadata; Stouffer-vs-DL disambiguated;
+  "replicated" → "candidate" in figures; Freedman–Lane + library-size
+  sensitivity both confirm the mitochondrial result; bounded translational
+  paragraph linking to the muscle-quality companion Perspective with HPGD
+  transparency).
+- `figures/` — Figures 1–5 (PNG + PDF). Figure 5 = pathway-level competitive
+  shift (in-set minus out-set) for the mitochondrial programme + 6 sub-modules
+  + non-mitochondrial controls, from a label-permutation test (N=2,000).
+- `supplementary/` — Tables S1/S3/S4/S5/S5b/S6/S7/S8, main Tables 1–3,
+  experimental validation plan v0.1 + v0.2 + v0.3 (operationalized), validation
+  open-issues tracker, two internal critical reviews (v0.1, v0.2), Codex
+  adversarial review v0.3, modality/dataset audits, reproducibility receipt,
+  cover letter, code/data availability (updated to include MIT License + Zenodo
+  DOI + validation/ deliverables).
 - `manifest.tsv` — path, SHA256, byte size for every packaged file.
 
 ## Provenance
 - Generated: `{GEN_DATE}`
-- Source repository HEAD: `{head}`
+- Source repository HEAD: `{head}` (branch `sarcopenia/paper1-v0.4`)
 - Builder: `python3 scripts/build_submission_package.py`
 - Verifier: {verify_status()}
+- License: MIT (full text at `sarcopenia-multiomic-resource/LICENSE`)
+- Repository: `https://github.com/BrownBiotech/hmsr-sarcopenia` (release tag
+  `v0.4-paper1`; DOI: 10.5281/zenodo.<TBD-auto-on-release>)
 
 ## Honesty note
 No gene survives genome-wide FDR; gene lists are exploratory candidates from a
 disclosed post-hoc gate. The pathway-level mitochondrial finding is robust to
-muscle-composition adjustment (Table S3/S4). See
-`supplementary/internal_critical_review_v0.2.md`.
+muscle-composition adjustment (Table S3/S4), to Freedman–Lane covariate-
+exchangeable permutation (Table S7), and to library-size covariate adjustment
+(Table S8). See `supplementary/internal_critical_review_v0.2.md` and
+`supplementary/codex_adversarial_review_v0.3.md`.
 """
     (OUT / "README.md").write_text(readme)
     copied.append(("README.md", OUT / "README.md"))

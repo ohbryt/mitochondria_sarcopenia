@@ -67,6 +67,8 @@ SUPPLEMENTARY = [
     (BASE / "manuscripts/experimental_validation_plan_v0.2.md", "supplementary/experimental_validation_plan_v0.2.md"),
     (BASE / "validation/plan/experimental_validation_plan_v0.3.md", "supplementary/experimental_validation_plan_v0.3.md"),
     (BASE / "validation/plan/OPEN_ISSUES.md", "supplementary/validation_open_issues.md"),
+    (BASE / "validation/constructs/CRISPR_DESIGNS.md", "supplementary/crispr_designs.md"),
+    (BASE / "validation/constructs/OFF_TARGET_AUDIT.md", "supplementary/off_target_audit.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.1.md", "supplementary/internal_critical_review_v0.1.md"),
     (BASE / "manuscripts/CRITICAL_REVIEW_v0.2.md", "supplementary/internal_critical_review_v0.2.md"),
     (BASE / "results/modality_detected.csv", "supplementary/modality_detected.csv"),

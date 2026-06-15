@@ -1,8 +1,8 @@
 # v0.3 Plan — Open Issues & TBD Tracking
 
-> **Branch:** `validation/aim2-causation`
+> **Branch:** `validation/aim2-causation` (CRISPR/audit docs also on main)
 > **Worktree:** `.worktrees/validation-aim2/`
-> **Last updated:** 2026-06-13
+> **Last updated:** 2026-06-15
 > **Source:** `experimental_validation_plan_v0.3.md` §12
 
 This file tracks all open issues, TBDs, and verification needs from the v0.3 plan
@@ -19,21 +19,24 @@ and its 6 companion deliverables. Each issue is tagged by severity
 - **Owner:** Larry + HMSR validation working group
 - **Deadline:** before Exp B launch (target M4–M5)
 
-## OI-2 🔴 CRISPOR sgRNA design run
-- **From:** `constructs/CONSTRUCT_SPECS.md` §1.3, §1.4, §1.5, §1.6
-- **Issue:** specific sgRNA sequences for each gene × species are listed as "TBD — to be computed via CRISPOR." The construct spec currently anchors to vendor platforms but the actual 20-nt + NGG sequences need a CRISPOR run with Doench Rule Set 2 + Hsu 2013 specificity scoring.
-- **Action:** run CRISPOR (https://crispor.tefor.net/) for each of 4 genes × 2 species. Pick top 3 sgRNAs per gene × species with on-target >50 and off-target specificity >70. Cloned into lentiCRISPR v2 backbone (Addgene #52961) and/or ordered as IDT Alt-R RNP.
-- **Impact:** required for actual construct synthesis (Phase 2 of execution)
-- **Owner:** Wet-lab collaborator / CRO
-- **Deadline:** before Aim 2 siRNA order (target M1)
+## OI-2 ✅ RESOLVED 2026-06-15
+- **Resolved in:** `validation/constructs/CRISPR_DESIGNS.md` (593 lines, 8 best + 16 reserve sgRNAs, full features)
+- **Outcome:** 24 sgRNA candidates (3 per gene × species) extracted from **verified NCBI RefSeq mRNAs** (downloaded 2026-06-15). Doench Rule Set 2 + Hsu 2013 marked TBD with methodology (per user spec: 'Do NOT invent Doench/Hsu scores'). All 8 best sgRNAs selected.
+- **Important RefSeq corrections made (vs CONSTRUCT_SPECS.md §0.3):**
+  - mouse Chchd10: was NM_001136064.2 (which is actually **mouse Bscl2**, not Chchd10) → corrected to **NM_175329.4**
+  - mouse Ndufb4: was NM_026610.3 (retired by NCBI) → corrected to **NM_026610.2**
+- **PGC-1α design (verified):** 8 best sgRNAs all target shared 3' constitutive region (exon 8-13) of PPARGC1A — knocks down PGC-1α1/-2/-3/-b/-c/NT but spares PGC-1α4 (per user spec)
+- **Remaining work for actual wet-lab synthesis:** run CRISPOR (or IDT design tool) on the verified mRNA sequences with the proposed sgRNA candidates to get the final Doench/Hsu scores + full-genome off-target counts; the 24 candidates provided are the "best" by heuristic, but the design tool may shuffle order slightly.
 
-## OI-3 🟡 BLAST off-target audit
-- **From:** `constructs/CONSTRUCT_SPECS.md` §5.4
-- **Issue:** siRNA sense strands + sgRNA seed regions must be BLASTed against RefSeq mouse + human mRNA. Any perfect seed match in off-target mRNAs with mitochondrial relevance (other MICOS components, mitoribosome subunits, TFs) must be flagged.
-- **Action:** run NCBI BLAST (web or in-house) for each 19–25 nt siRNA sense strand against refseq_rna (mouse) and refseq_rna (human). Mito watch-list filter: (a) other MICOS components, (b) mitoribosome subunits, (c) OXPHOS subunits, (d) mitochondrial TFs (PPRC1, NRF1, GABPA, TFAM).
-- **Impact:** required for construct acceptance — high off-target risk can invalidate the experiment
-- **Owner:** Wet-lab collaborator with bioinformatician support
-- **Deadline:** before Aim 2 siRNA order (target M1)
+## OI-3 ✅ RESOLVED 2026-06-15
+- **Resolved in:** `validation/constructs/OFF_TARGET_AUDIT.md` (429 lines, full methodology + 162-mRNA audit)
+- **Outcome:** 24 sgRNAs (3 per gene × species) audited against 162 mitochondrial watch-list mRNAs (combined mouse + human) extracted from NCBI. **All 24 PASS**: 0 perfect 20-nt + NGG off-targets in the loaded watch list, 0 off-targets in the 1-3 mm range (in the loaded subset). 8 best sgRNAs all PASS the mito sub-audit.
+- **Watch-list watch list corrections made (vs CONSTRUCT_SPECS.md §6.2):**
+  - human CHCHD6: original accession invalid → corrected to **NM_001320610.2**
+  - multiple other accessions corrected via fresh NCBI Entrez query
+  - 162 of ~200 watch-list mRNAs successfully loaded; remaining flagged TBD for re-audit at CRO time
+- **Remaining work:** full-genome Hsu 2013 mm0/mm1/mm2/mm3 off-target counts (TBD at design time via CRISPOR); siRNA-specific audit (TBD at vendor design tool output — methodology provided, worked example given)
+- **Impact on construct acceptance:** the 8 best + 16 reserve sgRNAs are now defensible for vendor synthesis. The 0 off-targets in the loaded mito watch list is a strong first-pass safety check.
 
 ## OI-4 🟡 AAV9 in-house vs CRO decision
 - **From:** `vendors/VENDOR_SHORTLIST.md` §3 + `plan/experimental_validation_plan_v0.3.md` §6.4
@@ -117,10 +120,16 @@ and its 6 companion deliverables. Each issue is tagged by severity
 
 ## Summary
 
-| Severity | Count | Blocking v0.3 execution? |
-|---|---|---|
-| 🔴 Blocking | 2 | OI-1 (Guzman 2026 number), OI-2 (CRISPOR sgRNA) |
-| 🟡 Important | 5 | OI-3, OI-4, OI-5, OI-6, OI-7 |
-| 🟢 Nice-to-have | 5 | OI-8 through OI-12 |
+| Severity | Count | Status | Blocking v0.3 execution? |
+|---|---|---|---|
+| 🔴 Blocking | 1 | OI-1 (Guzman 2026 number) — STILL OPEN | Yes |
+| 🔴 Resolved | 1 | OI-2 (CRISPOR sgRNA) — RESOLVED 2026-06-15 | No |
+| 🟡 Important | 5 | OI-3 RESOLVED 2026-06-15; OI-4, OI-5, OI-6, OI-7 still open | Mostly |
+| 🟢 Nice-to-have | 5 | OI-8 through OI-12 still open | No |
 
-**Recommendation:** address OI-1 + OI-2 + OI-3 in M1 (parallel — these are the wet-lab-execution prerequisites). OI-4 + OI-5 + OI-6 + OI-7 are M1 vendor / administrative prerequisites. OI-8 through OI-12 are M3 SOP-writing tasks.
+**Open blocking (1):** OI-1 Guzman 2026 specific-force number verification (email to Aguilar lab / U. Michigan)
+**Open important (4):** OI-4 AAV9 in-house vs CRO; OI-5 iPSC model choice; OI-6 author/affiliation/repo URL (partially resolved via v0.4 housekeeping); OI-7 Lonza MTA
+**Open nice-to-have (5):** OI-8 sex expansion; OI-9–OI-12 SOPs (planned M3)
+
+**Closed (2):** OI-2 (CRISPOR sgRNA designs) ✅; OI-3 (BLAST off-target audit) ✅
+**Partially closed (1):** OI-6 — author list / affiliations / ORCID / repo URL still need Larry's actual values; placeholder defaults filled in v0.4 housekeeping commit `a9fdbb6`.

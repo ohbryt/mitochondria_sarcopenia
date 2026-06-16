@@ -24,7 +24,7 @@ Eda2r/Hjv rat-exercise paper.
 
 ## Provenance
 - Generated: `2026-06-13`
-- Source repository HEAD: `a9fdbb6b8ab4d4c0cb47856e14d26f7acd9221fd` (branch `sarcopenia/paper1-v0.4`)
+- Source repository HEAD: `677f1a7180c8b920fc9043866a3e8548ec34301e` (branch `sarcopenia/paper1-v0.4`)
 - Builder: `python3 scripts/build_submission_package.py`
 - Verifier: PASS: 35  FAIL: 0 | STATUS=PASS
 - License: MIT (full text at `sarcopenia-multiomic-resource/LICENSE`)

@@ -5,20 +5,14 @@ version: "v0.4-paper1"
 date-released: "2026-06-13"
 license: MIT
 license-url: "https://opensource.org/licenses/MIT"
-repository-code: "https://github.com/BrownBiotech/hmsr-sarcopenia"
-repository: "https://github.com/BrownBiotech/hmsr-sarcopenia"
-
-identifiers:
-  - type: doi
-    value: "10.5281/zenodo.<TBD-auto-on-release>"
-    description: "Zenodo DOI (auto-minted on release tag via Zenodo GitHub integration)"
+repository-code: "https://github.com/ohbryt/mitochondria_sarcopenia"
+repository: "https://github.com/ohbryt/mitochondria_sarcopenia"
 
 authors:
   - family-names: Oh
     given-names: Larry
     affiliation: Brown Biotech, Seoul, South Korea
     email: ohbryt@gmail.com
-    orcid: "https://orcid.org/0000-0000-0000-0000"
 
 contact:
   - family-names: Oh

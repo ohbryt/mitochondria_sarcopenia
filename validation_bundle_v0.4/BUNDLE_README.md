@@ -149,7 +149,7 @@ prerequisites.
 ## 7. License and citation
 
 - **License:** MIT (full text at `sarcopenia-multiomic-resource/LICENSE`)
-- **Repository:** `https://github.com/BrownBiotech/hmsr-sarcopenia` (release
+- **Repository:** `https://github.com/ohbryt/mitochondria_sarcopenia` (release
   tag `v0.4-paper1`; DOI auto-mints via Zenodo on release)
 - **Citation metadata:** `sarcopenia-multiomic-resource/CITATION.cff`
 - **Paper 1 (v0.4)** is submitted to GeroScience / npj Aging / JCSM (JCR 5-10%)

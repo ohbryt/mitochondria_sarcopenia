@@ -430,9 +430,9 @@ NCBI GEO: GSE111006, GSE111010, GSE111016, GSE226151. Full replication matrix an
 candidate lists in Supplementary Tables S1–S3.
 
 ## Code availability
-HMSR analysis code is publicly available at `https://github.com/BrownBiotech/hmsr-sarcopenia`
-(release tag `v0.4-paper1`, DOI: `10.5281/zenodo.<TBD-auto-on-release>` via Zenodo
-GitHub integration) under the **MIT License** (`LICENSE` file at repository root).
+HMSR analysis code is publicly available at `https://github.com/ohbryt/mitochondria_sarcopenia`
+(release tag `v0.4-paper1`; archival DOI pending) under the **MIT License**
+(`LICENSE` file at repository root).
 A one-command re-run and a terminal verifier (`scripts/verify.py`, STATUS=PASS)
 reproduce all reported numbers. Output provenance hashes are in `data/CHECKSUMS.txt`.
 Companion in-vitro / in-vivo validation plan (v0.2, v0.3) is included in the

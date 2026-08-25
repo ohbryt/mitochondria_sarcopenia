@@ -28,8 +28,8 @@ Eda2r/Hjv rat-exercise paper.
 - Builder: `python3 scripts/build_submission_package.py`
 - Verifier: PASS: 35  FAIL: 0 | STATUS=PASS
 - License: MIT (full text at `sarcopenia-multiomic-resource/LICENSE`)
-- Repository: `https://github.com/BrownBiotech/hmsr-sarcopenia` (release tag
-  `v0.4-paper1`; DOI: 10.5281/zenodo.<TBD-auto-on-release>)
+- Repository: `https://github.com/ohbryt/mitochondria_sarcopenia` (release tag
+  `v0.4-paper1`; archival DOI pending)
 
 ## Honesty note
 No gene survives genome-wide FDR; gene lists are exploratory candidates from a

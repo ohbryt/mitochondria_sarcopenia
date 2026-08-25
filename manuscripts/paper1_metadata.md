@@ -35,18 +35,18 @@
 > mitochondria, mitochondrial translation, mitoribosome, aging
 
 ### Repository URL ✅ (pending actual org/repo creation)
-- `https://github.com/BrownBiotech/hmsr-sarcopenia` (placeholder)
-- **Action:** create the GitHub org/repo and update this URL when live
+- `https://github.com/ohbryt/mitochondria_sarcopenia`
 
 ### Release / version tag ✅
 - `v0.4-paper1` (proposed)
 - Source commit: `54839b7` (the v0.4 manuscript commit)
 - Includes: full source + `environment.lock.yml` + reproducibility receipt
 
-### Zenodo DOI ✅ (auto-mints on release)
-- `10.5281/zenodo.<TBD-auto-on-release>` (placeholder)
+### Zenodo DOI ⏳
+- Not yet minted; do not cite a placeholder DOI
 - Process: `zenodo.org` → GitHub integration (auto-mints DOI on release tag)
-- **Action:** enable Zenodo GitHub integration in the BrownBiotech org
+- **Action:** enable Zenodo GitHub integration for the repository, create the
+  release, and add the DOI only after Zenodo returns it
 
 ### License ✅
 - **MIT License** (full text at `sarcopenia-multiomic-resource/LICENSE`)
@@ -56,7 +56,7 @@
 - `ohbryt@gmail.com` (matches git author; consistent with corresponding author)
 
 ### ORCID ⏳
-- **TBD** — placeholder: `0000-0000-0000-0000` in CITATION.cff; Larry to register at https://orcid.org and update before submission
+- **Not supplied** — add a verified ORCID to CITATION.cff before submission
 - **Note:** ORCID is **required by most major journals** (GeroScience, npj Aging, JCSM, Nature Aging). Registration is 5 min.
 
 ### Competing interests ✅
@@ -97,8 +97,8 @@
 
 ### Code availability statement ✅
 > "HMSR analysis code is publicly available at
-> `https://github.com/BrownBiotech/hmsr-sarcopenia` (release tag `v0.4-paper1`,
-> DOI: `10.5281/zenodo.<TBD-auto-on-release>` via Zenodo GitHub integration)
+> `https://github.com/ohbryt/mitochondria_sarcopenia` (release tag `v0.4-paper1`,
+> archival DOI pending)
 > under the **MIT License** (`LICENSE` file at repository root). A one-command
 > re-run and a terminal verifier (`scripts/verify.py`, STATUS=PASS) reproduce
 > all reported numbers. Output provenance hashes are in `data/CHECKSUMS.txt`.

@@ -6,8 +6,8 @@ GSE226151. No new human/animal data were generated for the computational resourc
 
 ## Code
 HMSR analysis code is publicly available at
-`https://github.com/BrownBiotech/hmsr-sarcopenia` (release tag `v0.4-paper1`,
-DOI: `10.5281/zenodo.<TBD-auto-on-release>` via Zenodo GitHub integration) under
+`https://github.com/ohbryt/mitochondria_sarcopenia` (release tag `v0.4-paper1`,
+archival DOI pending) under
 the **MIT License** (`LICENSE` file at repository root).
 
 The code is provided in the repository under `pipeline/`, `scripts/`,

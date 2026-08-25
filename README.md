@@ -23,6 +23,7 @@ drug treats sarcopenia.
 - `docs/MARCHF5_HUMAN_EVIDENCE.md` — reproducible negative target audit
 - `manuscripts/ppm1k_bckdk_bckdh_v1.0.md` — integrative target-validation manuscript
 - `submission/ppm1k_axis_v1.0/` — frozen manuscript, figures, and auditable target evidence
+- `CLAUDE_REVIEW_AND_NEXT_WORK.md` — review protocol and versioned v1.1 work contract
 - `pipeline/` and `scripts/` — analysis and verification code
 - `validation_bundle_v0.4/` — experimental-validation handoff
 

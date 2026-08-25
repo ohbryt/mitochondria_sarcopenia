@@ -20,6 +20,7 @@ drug treats sarcopenia.
 - `submission/v0.4/manifest.tsv` — file hashes and sizes
 - `results/modality_detected.csv` — structured modality audit
 - `results/dataset_audit.csv` — dataset inclusion decisions
+- `docs/MARCHF5_HUMAN_EVIDENCE.md` — reproducible negative target audit
 - `pipeline/` and `scripts/` — analysis and verification code
 - `validation_bundle_v0.4/` — experimental-validation handoff
 

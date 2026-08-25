@@ -1,0 +1,43 @@
+{
+  "audit_date": "2026-08-25",
+  "cohort_summary": {
+    "cases": 53,
+    "cohorts_detected": 4,
+    "controls": 82,
+    "independent_source_groups": 2,
+    "source_group_directions": {
+      "GSE111017_family": "case_down",
+      "GSE226151_independent": "case_up"
+    },
+    "strict_binary_samples": 135
+  },
+  "detected_modality": "bulk_transcriptomics",
+  "gates": {
+    "functional_or_causal_evidence": false,
+    "genome_wide_fdr_below_0_05": false,
+    "same_direction_in_at_least_two_independent_source_groups": false
+  },
+  "gene_symbol": "MARCHF5",
+  "meta_result": {
+    "beta": -0.053620329089772545,
+    "direction": "case_down",
+    "fdr": 0.9138163618252946,
+    "heterogeneity_flag": true,
+    "heterogeneity_i2": 43.148828771689786,
+    "leave_one_cohort_out_replication_rate": 0.25,
+    "p_value": 0.2706669554967981,
+    "se": 0.04867813845221713
+  },
+  "protocol_id": "HMSR-TARGET-AUDIT-1.0.0",
+  "source_artifacts": {
+    "differential_by_cohort": {
+      "filename": "differential_by_cohort.tsv",
+      "sha256": "3d9d166112611c08767e729c52211b48e40d211a92b753574be4ee0441439b87"
+    },
+    "replication_matrix": {
+      "filename": "replication_matrix.tsv",
+      "sha256": "b97d9267dd09d37bf8990f17bb1a31a12fa30bbe27e41fee6279827b02fb7447"
+    }
+  },
+  "status": "NOT_REPLICATED"
+}

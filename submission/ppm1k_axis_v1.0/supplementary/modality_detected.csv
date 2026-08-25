@@ -1,0 +1,8 @@
+accession,repository,organism_verbatim,platform_instrument,detected_modality,evidence_field,evidence_value,confidence,confirmed
+GSE111006,GEO,Homo sapiens,GPL16791; Illumina HiSeq 2500,bulk_transcriptomics,platform,GPL16791; Illumina HiSeq 2500,high,platform_field_match
+GSE111010,GEO,Homo sapiens,GPL16791; Illumina HiSeq 2500,bulk_transcriptomics,platform,GPL16791; Illumina HiSeq 2500,high,platform_field_match
+GSE111016,GEO,Homo sapiens,GPL16791; Illumina HiSeq 2500,bulk_transcriptomics,platform,GPL16791; Illumina HiSeq 2500,high,platform_field_match
+GSE226151,GEO,Homo sapiens,GPL16791; Illumina HiSeq 2500,bulk_transcriptomics,platform,GPL16791; Illumina HiSeq 2500,high,platform_field_match
+GSE164471,GEO,Homo sapiens,Illumina HiSeq 2500,bulk_transcriptomics,platform,Illumina HiSeq 2500,high,platform_field_match
+GSE1428,GEO,Homo sapiens,GPL96 Affymetrix Human Genome U133A Array,bulk_transcriptomics,platform,Affymetrix array,high,platform_field_match
+GSE277819,GEO,Homo sapiens,GPL24676 Illumina NovaSeq 6000,bulk_transcriptomics,platform,GPL24676 Illumina NovaSeq 6000,high,platform_field_match

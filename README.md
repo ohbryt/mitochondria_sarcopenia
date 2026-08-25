@@ -21,6 +21,8 @@ drug treats sarcopenia.
 - `results/modality_detected.csv` — structured modality audit
 - `results/dataset_audit.csv` — dataset inclusion decisions
 - `docs/MARCHF5_HUMAN_EVIDENCE.md` — reproducible negative target audit
+- `manuscripts/ppm1k_bckdk_bckdh_v1.0.md` — integrative target-validation manuscript
+- `submission/ppm1k_axis_v1.0/` — frozen manuscript, figures, and auditable target evidence
 - `pipeline/` and `scripts/` — analysis and verification code
 - `validation_bundle_v0.4/` — experimental-validation handoff
 
